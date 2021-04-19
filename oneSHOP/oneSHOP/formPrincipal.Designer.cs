@@ -1,0 +1,127 @@
+﻿namespace oneSHOP
+{
+    partial class formPrincipal
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.cadastrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.consignadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.vendaAtacadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.vendaDiretaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.estoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.financeiroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.relatóriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cadastrosToolStripMenuItem,
+            this.consignadoToolStripMenuItem,
+            this.vendaAtacadoToolStripMenuItem,
+            this.vendaDiretaToolStripMenuItem,
+            this.estoqueToolStripMenuItem,
+            this.financeiroToolStripMenuItem,
+            this.relatóriosToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.TabIndex = 0;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // cadastrosToolStripMenuItem
+            // 
+            this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
+            this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
+            this.cadastrosToolStripMenuItem.Text = "Cadastros";
+            // 
+            // consignadoToolStripMenuItem
+            // 
+            this.consignadoToolStripMenuItem.Name = "consignadoToolStripMenuItem";
+            this.consignadoToolStripMenuItem.Size = new System.Drawing.Size(83, 20);
+            this.consignadoToolStripMenuItem.Text = "Consignado";
+            // 
+            // vendaAtacadoToolStripMenuItem
+            // 
+            this.vendaAtacadoToolStripMenuItem.Name = "vendaAtacadoToolStripMenuItem";
+            this.vendaAtacadoToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
+            this.vendaAtacadoToolStripMenuItem.Text = "Venda Atacado";
+            // 
+            // vendaDiretaToolStripMenuItem
+            // 
+            this.vendaDiretaToolStripMenuItem.Name = "vendaDiretaToolStripMenuItem";
+            this.vendaDiretaToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
+            this.vendaDiretaToolStripMenuItem.Text = "Venda Direta";
+            // 
+            // estoqueToolStripMenuItem
+            // 
+            this.estoqueToolStripMenuItem.Name = "estoqueToolStripMenuItem";
+            this.estoqueToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.estoqueToolStripMenuItem.Text = "Estoque";
+            // 
+            // financeiroToolStripMenuItem
+            // 
+            this.financeiroToolStripMenuItem.Name = "financeiroToolStripMenuItem";
+            this.financeiroToolStripMenuItem.Size = new System.Drawing.Size(74, 20);
+            this.financeiroToolStripMenuItem.Text = "Financeiro";
+            // 
+            // relatóriosToolStripMenuItem
+            // 
+            this.relatóriosToolStripMenuItem.Name = "relatóriosToolStripMenuItem";
+            this.relatóriosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
+            this.relatóriosToolStripMenuItem.Text = "Relatórios";
+            // 
+            // formPrincipal
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
+            this.Name = "formPrincipal";
+            this.Text = "Principal";
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem cadastrosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem consignadoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem vendaAtacadoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem vendaDiretaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem estoqueToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem financeiroToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem relatóriosToolStripMenuItem;
+    }
+}

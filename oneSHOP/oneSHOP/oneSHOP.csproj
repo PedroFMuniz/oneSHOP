@@ -1,0 +1,400 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A64F1781-51F1-46EF-98E5-8EED6956D491}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>oneSHOP</RootNamespace>
+    <AssemblyName>oneSHOP</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\Carteira.cs" />
+    <Compile Include="Classes\Conta.cs" />
+    <Compile Include="Classes\Empresa.cs" />
+    <Compile Include="Classes\Fiscal.cs" />
+    <Compile Include="Classes\Forma_de_Pagamento.cs" />
+    <Compile Include="Classes\Fornecedor.cs" />
+    <Compile Include="Classes\Grupo.cs" />
+    <Compile Include="Classes\Grupo_Natureza.cs" />
+    <Compile Include="Classes\Lancamento.cs" />
+    <Compile Include="Classes\Lancamento_Produto.cs" />
+    <Compile Include="Classes\Linha.cs" />
+    <Compile Include="Classes\Movimento.cs" />
+    <Compile Include="Classes\Movimento_Produto.cs" />
+    <Compile Include="Classes\Natureza.cs" />
+    <Compile Include="Classes\Pedido.cs" />
+    <Compile Include="Classes\Pedido_Produto.cs" />
+    <Compile Include="Classes\Pessoa.cs" />
+    <Compile Include="Classes\Praca.cs" />
+    <Compile Include="Classes\Produto.cs" />
+    <Compile Include="Classes\Tamanho.cs" />
+    <Compile Include="Classes\Usuario.cs" />
+    <Compile Include="formCadastros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formCadastros.Designer.cs">
+      <DependentUpon>formCadastros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formLogin.Designer.cs">
+      <DependentUpon>formLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formPrincipal.Designer.cs">
+      <DependentUpon>formPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsCarteiras\formCarteiras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsCarteiras\formCarteiras.Designer.cs">
+      <DependentUpon>formCarteiras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsCarteiras\formEditarCarteira.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsCarteiras\formEditarCarteira.Designer.cs">
+      <DependentUpon>formEditarCarteira.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsCarteiras\formNovaCarteira.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsCarteiras\formNovaCarteira.Designer.cs">
+      <DependentUpon>formNovaCarteira.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsContas\formContas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsContas\formContas.Designer.cs">
+      <DependentUpon>formContas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsContas\formEditarConta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsContas\formEditarConta.Designer.cs">
+      <DependentUpon>formEditarConta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsContas\formNovaConta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsContas\formNovaConta.Designer.cs">
+      <DependentUpon>formNovaConta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsFinanceiro\formCadastrosFinanceiro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsFinanceiro\formCadastrosFinanceiro.Designer.cs">
+      <DependentUpon>formCadastrosFinanceiro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsFinanceiro\formFinanceiro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsFinanceiro\formFinanceiro.Designer.cs">
+      <DependentUpon>formFinanceiro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsFornecedores\formEditarFornecedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsFornecedores\formEditarFornecedor.Designer.cs">
+      <DependentUpon>formEditarFornecedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsFornecedores\formFornecedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsFornecedores\formFornecedores.Designer.cs">
+      <DependentUpon>formFornecedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsFornecedores\formNovoFornecedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsFornecedores\formNovoFornecedor.Designer.cs">
+      <DependentUpon>formNovoFornecedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsLancamentos\formEditarLancamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsLancamentos\formEditarLancamento.Designer.cs">
+      <DependentUpon>formEditarLancamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsLancamentos\formNovoLancamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsLancamentos\formNovoLancamento.Designer.cs">
+      <DependentUpon>formNovoLancamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsMonetario\formMonetario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsMonetario\formMonetario.Designer.cs">
+      <DependentUpon>formMonetario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsMovimentoEstoque\formMovimentoEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsMovimentoEstoque\formMovimentoEstoque.Designer.cs">
+      <DependentUpon>formMovimentoEstoque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsMovimentoEstoque\formNovoMovimento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsMovimentoEstoque\formNovoMovimento.Designer.cs">
+      <DependentUpon>formNovoMovimento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsNaturezas\formEditarNatureza.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsNaturezas\formEditarNatureza.Designer.cs">
+      <DependentUpon>formEditarNatureza.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsNaturezas\formNaturezas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsNaturezas\formNaturezas.Designer.cs">
+      <DependentUpon>formNaturezas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsNaturezas\formNovaNatureza.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsNaturezas\formNovaNatureza.Designer.cs">
+      <DependentUpon>formNovaNatureza.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsPedidos\formAcerto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsPedidos\formAcerto.Designer.cs">
+      <DependentUpon>formAcerto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsPedidos\formDevolucao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsPedidos\formDevolucao.Designer.cs">
+      <DependentUpon>formDevolucao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsPedidos\formNovoPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsPedidos\formNovoPedido.Designer.cs">
+      <DependentUpon>formNovoPedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsPedidos\formPagamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsPedidos\formPagamento.Designer.cs">
+      <DependentUpon>formPagamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsPedidos\formTroca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsPedidos\formTroca.Designer.cs">
+      <DependentUpon>formTroca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsPessoas\formEditarPessoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsPessoas\formEditarPessoa.Designer.cs">
+      <DependentUpon>formEditarPessoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsPessoas\formNovaPessoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsPessoas\formNovaPessoa.Designer.cs">
+      <DependentUpon>formNovaPessoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsPessoas\formPessoas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsPessoas\formPessoas.Designer.cs">
+      <DependentUpon>formPessoas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsProdutos\formEditarProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsProdutos\formEditarProduto.Designer.cs">
+      <DependentUpon>formEditarProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsProdutos\formNovoProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsProdutos\formNovoProduto.Designer.cs">
+      <DependentUpon>formNovoProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsProdutos\formProdutos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsProdutos\formProdutos.Designer.cs">
+      <DependentUpon>formProdutos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="formCadastros.resx">
+      <DependentUpon>formCadastros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formLogin.resx">
+      <DependentUpon>formLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formPrincipal.resx">
+      <DependentUpon>formPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsCarteiras\formCarteiras.resx">
+      <DependentUpon>formCarteiras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsCarteiras\formEditarCarteira.resx">
+      <DependentUpon>formEditarCarteira.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsCarteiras\formNovaCarteira.resx">
+      <DependentUpon>formNovaCarteira.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsContas\formContas.resx">
+      <DependentUpon>formContas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsContas\formEditarConta.resx">
+      <DependentUpon>formEditarConta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsContas\formNovaConta.resx">
+      <DependentUpon>formNovaConta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsFinanceiro\formCadastrosFinanceiro.resx">
+      <DependentUpon>formCadastrosFinanceiro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsFinanceiro\formFinanceiro.resx">
+      <DependentUpon>formFinanceiro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsFornecedores\formEditarFornecedor.resx">
+      <DependentUpon>formEditarFornecedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsFornecedores\formFornecedores.resx">
+      <DependentUpon>formFornecedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsFornecedores\formNovoFornecedor.resx">
+      <DependentUpon>formNovoFornecedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsLancamentos\formEditarLancamento.resx">
+      <DependentUpon>formEditarLancamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsLancamentos\formNovoLancamento.resx">
+      <DependentUpon>formNovoLancamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsMonetario\formMonetario.resx">
+      <DependentUpon>formMonetario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsMovimentoEstoque\formMovimentoEstoque.resx">
+      <DependentUpon>formMovimentoEstoque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsMovimentoEstoque\formNovoMovimento.resx">
+      <DependentUpon>formNovoMovimento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsNaturezas\formEditarNatureza.resx">
+      <DependentUpon>formEditarNatureza.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsNaturezas\formNaturezas.resx">
+      <DependentUpon>formNaturezas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsNaturezas\formNovaNatureza.resx">
+      <DependentUpon>formNovaNatureza.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsPedidos\formAcerto.resx">
+      <DependentUpon>formAcerto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsPedidos\formDevolucao.resx">
+      <DependentUpon>formDevolucao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsPedidos\formNovoPedido.resx">
+      <DependentUpon>formNovoPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsPedidos\formPagamento.resx">
+      <DependentUpon>formPagamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsPedidos\formTroca.resx">
+      <DependentUpon>formTroca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsPessoas\formEditarPessoa.resx">
+      <DependentUpon>formEditarPessoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsPessoas\formNovaPessoa.resx">
+      <DependentUpon>formNovaPessoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsPessoas\formPessoas.resx">
+      <DependentUpon>formPessoas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsProdutos\formEditarProduto.resx">
+      <DependentUpon>formEditarProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsProdutos\formNovoProduto.resx">
+      <DependentUpon>formNovoProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsProdutos\formProdutos.resx">
+      <DependentUpon>formProdutos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
