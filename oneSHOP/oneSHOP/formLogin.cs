@@ -39,5 +39,12 @@ namespace oneSHOP
                 txtSenha.Text = string.Empty;
             }
         }
+
+        private void btnEntrar_Click(object sender, EventArgs e)
+        {
+            formPrincipal formPrincipal = new formPrincipal();
+            formPrincipal.Show();
+            this.Hide();
+        }
     }
 }

@@ -12,7 +12,7 @@
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
-        {
+       {
             if (disposing && (components != null))
             {
                 components.Dispose();
@@ -60,12 +60,14 @@
             this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
             this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.cadastrosToolStripMenuItem.Text = "Cadastros";
+            this.cadastrosToolStripMenuItem.Click += new System.EventHandler(this.cadastrosToolStripMenuItem_Click);
             // 
             // consignadoToolStripMenuItem
             // 
             this.consignadoToolStripMenuItem.Name = "consignadoToolStripMenuItem";
             this.consignadoToolStripMenuItem.Size = new System.Drawing.Size(83, 20);
             this.consignadoToolStripMenuItem.Text = "Consignado";
+            this.consignadoToolStripMenuItem.Click += new System.EventHandler(this.consignadoToolStripMenuItem_Click);
             // 
             // vendaAtacadoToolStripMenuItem
             // 
@@ -106,6 +108,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "formPrincipal";
             this.Text = "Principal";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.formPrincipal_FormClosed);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
