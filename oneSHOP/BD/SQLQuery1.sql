@@ -321,17 +321,18 @@ CREATE PROCEDURE BuscaFiscalID @Valor1 INT AS SELECT * FROM Fiscal WHERE ID = @V
 GO
 --Com outros parametros
 GO
-CREATE PROCEDURE BuscaProdutoNome @Nome VARCHAR(100) AS SELECT * FROM Produto WHERE Nome = @Nome
+CREATE PROCEDURE BuscaProdutoNome @Nome VARCHAR(100) AS SELECT * FROM Produto WHERE Nome LIKE CONCAT('%',@Nome,'%')
 GO
-CREATE PROCEDURE BuscaPedidoNome @Nome VARCHAR(100) AS SELECT * FROM Pedido WHERE Nome = @Nome
+CREATE PROCEDURE BuscaPedidoNome @Nome VARCHAR(100) AS SELECT * FROM Pedido WHERE Nome LIKE CONCAT('%',@Nome,'%')
 GO
-CREATE PROCEDURE BuscaMovimentoNome @Nome VARCHAR(100) AS SELECT * FROM Movimento WHERE Nome = @Nome
+CREATE PROCEDURE BuscaMovimentoNome @Nome VARCHAR(100) AS SELECT * FROM Movimento WHERE Nome LIKE CONCAT('%',@Nome,'%')
 GO
-CREATE PROCEDURE BuscaLancamentoNome @Nome VARCHAR(100) AS SELECT * FROM Lancamento WHERE Nome = @Nome
+CREATE PROCEDURE BuscaLancamentoNome @Nome VARCHAR(100) AS SELECT * FROM Lancamento WHERE Nome LIKE CONCAT('%',@Nome,'%')
 GO
-CREATE PROCEDURE BuscaPessoaNome @Nome VARCHAR(100) AS SELECT * FROM Pessoa WHERE Nome = @Nome
+CREATE PROCEDURE BuscaPessoaNome @Nome VARCHAR(100) AS SELECT * FROM Pessoa WHERE Nome LIKE CONCAT('%', @Nome, '%')
 GO
-
+CREATE PROCEDURE BuscaProdutoCodigo @Codigo VARCHAR(30) AS SELECT * FROM Produto WHERE Codigo = @Codigo
+GO
 --Inserção
 GO
 CREATE PROCEDURE InserirEmpresa 
@@ -790,3 +791,12 @@ CREATE PROCEDURE DeletarGrupo_NaturezaID @Valor1 INT AS DELETE FROM Grupo_Nature
 GO
 CREATE PROCEDURE DeletarFiscalID @Valor1 INT AS DELETE FROM Fiscal WHERE ID = @Valor1
 GO
+
+--Criação de registros de teste
+execute InserirUsuario 'jorge', '2584'
+execute InserirPraca 'Sorocaba'
+execute InserirPessoa 'Pessoa teste', '4756895482', 'Consultor', 1, '18071445', 'R. Jorge romão', 'Bairro', 'Sorocaba', 'SP', 1, 1, 30, NULL, NULL, '19900528', 'teste1234@teste.com', '15997011849'
+execute InserirPessoa 'Pessoa teste2', '4756895482', 'Consultor', 0, '18071445', 'R. Jorge romão', 'Bairro', 'Sorocaba', 'SP', 1, 1, NULL, NULL, NULL, '19900528', 'teste4321@teste.com', '15997011849'
+execute InserirPessoa 'Pessoa teste3', '4756895482', 'Cliente', 1, '18071445', 'R. Jorge romão', 'Bairro', 'Sorocaba', 'SP', 1, 1, 45, NULL, NULL, '19900528', 'teste1245@teste.com', '1599701184'
+execute InserirProduto 'Produto teste', '1178', 15.54, 30, '7890237489654', 'EAN13', NULL, 1, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL
+execute InserirProduto 'Produto teste2', '1179', 15.54, 35, '7890237489655', 'EAN13', NULL, 1, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL
