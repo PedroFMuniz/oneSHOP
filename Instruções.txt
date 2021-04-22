@@ -1,0 +1,9 @@
+Passo a passo
+git pull
+fazer alterações
+git add --all
+git commit -m "Mensagem"
+git push origin main
+git pull
+
+Colocar aqui instruções para criação das procedures especificas :)

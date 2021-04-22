@@ -41,6 +41,7 @@ CREATE TABLE Produto(
 )
 CREATE TABLE Pedido(
 	ID INT IDENTITY(1, 1) PRIMARY KEY NOT NULL,
+	Nome VARCHAR(100) NOT NULL,
 	Valor FLOAT NOT NULL,
 	Valor_de_Venda FLOAT NOT NULL,
 	Valor_de_Comissao FLOAT NOT NULL,
@@ -59,6 +60,7 @@ CREATE TABLE Pedido_Produto(
 )
 CREATE TABLE Movimento(
 	ID INT IDENTITY(1, 1) PRIMARY KEY NOT NULL,
+	Nome VARCHAR(100) NOT NULL,
 	Valor_Bruto FLOAT NOT NULL,
 	Valor_Liquido FLOAT NOT NULL,
 	Data_de_Emissao SMALLDATETIME NOT NULL,
@@ -316,6 +318,19 @@ GO
 CREATE PROCEDURE BuscaGrupo_NaturezaID @Valor1 INT AS SELECT * FROM Grupo_Natureza WHERE ID = @Valor1
 GO
 CREATE PROCEDURE BuscaFiscalID @Valor1 INT AS SELECT * FROM Fiscal WHERE ID = @Valor1
+GO
+--Com outros parametros
+GO
+CREATE PROCEDURE BuscaProdutoNome @Nome VARCHAR(100) AS SELECT * FROM Produto WHERE Nome = @Nome
+GO
+CREATE PROCEDURE BuscaPedidoNome @Nome VARCHAR(100) AS SELECT * FROM Pedido WHERE Nome = @Nome
+GO
+CREATE PROCEDURE BuscaMovimentoNome @Nome VARCHAR(100) AS SELECT * FROM Movimento WHERE Nome = @Nome
+GO
+CREATE PROCEDURE BuscaLancamentoNome @Nome VARCHAR(100) AS SELECT * FROM Lancamento WHERE Nome = @Nome
+GO
+CREATE PROCEDURE BuscaPessoaNome @Nome VARCHAR(100) AS SELECT * FROM Pessoa WHERE Nome = @Nome
+GO
 
 --Inserção
 GO
@@ -356,6 +371,7 @@ CREATE PROCEDURE InserirProduto
 	AS INSERT INTO Produto VALUES(@Nome, @Referencia, @Preco_Custo, @Preco_Venda, @Codigo, @Tipo_Codigo, @ID_Fiscal, @ID_Usuario, @ID_Grupo, @Foto, @Qt_Estoque, @Qt_Rua, @Inf_Adicionais, @ID_Tamanho, @ID_Linha, @ID_Fornecedor)
 GO
 CREATE PROCEDURE InserirPedido
+	@Nome VARCHAR(100),
 	@Valor FLOAT,
 	@Valor_de_Venda FLOAT,
 	@Valor_de_Comissao FLOAT,
@@ -364,7 +380,7 @@ CREATE PROCEDURE InserirPedido
 	@ID_Usuario INT,
 	@ID_Pessoa INT,
 	@Observacoes VARCHAR(500)
-	AS INSERT INTO Pedido VALUES(@Valor, @Valor_de_Venda, @Valor_de_Comissao, @Valor_Recebimento, @_Status, @ID_Usuario, @ID_Pessoa, @Observacoes)
+	AS INSERT INTO Pedido VALUES(@Nome, @Valor,@Valor_de_Venda, @Valor_de_Comissao, @Valor_Recebimento, @_Status, @ID_Usuario, @ID_Pessoa, @Observacoes)
 GO
 CREATE PROCEDURE InserirPedido_Produto
 	@Valor_Produto FLOAT,
@@ -374,13 +390,14 @@ CREATE PROCEDURE InserirPedido_Produto
 	AS INSERT INTO Pedido_Produto VALUES(@Valor_Produto, @Quantidade, @ID_Pedido, @ID_Produto)
 GO
 CREATE PROCEDURE InserirMovimento
+	@Nome VARCHAR(100),
 	@Valor_Bruto FLOAT,
 	@Valor_Liquido FLOAT,
 	@Data_de_Emissao SMALLDATETIME,
 	@Tipo VARCHAR(50),
 	@ID_Usuario INT,
 	@ID_Pessoa INT
-	AS INSERT INTO Movimento VALUES(@Valor_Bruto, @Valor_Liquido, @Data_de_Emissao, @Tipo, @ID_Usuario, @ID_Pessoa)
+	AS INSERT INTO Movimento VALUES(@Nome,@Valor_Bruto, @Valor_Liquido, @Data_de_Emissao, @Tipo, @ID_Usuario, @ID_Pessoa)
 GO
 CREATE PROCEDURE InserirMovimento_Produto
 	@Valor_Produto FLOAT,
@@ -547,6 +564,7 @@ CREATE PROCEDURE AtualizarProduto
 GO
 CREATE PROCEDURE AtualizarPedido
     @ID INT,
+	@Nome VARCHAR(100),
 	@Valor FLOAT,
 	@Valor_de_Venda FLOAT,
 	@Valor_de_Comissao FLOAT,
@@ -555,7 +573,7 @@ CREATE PROCEDURE AtualizarPedido
 	@ID_Usuario INT,
 	@ID_Pessoa INT,
 	@Observacoes VARCHAR(500)
-	AS UPDATE Pedido SET Valor = @Valor, Valor_de_Venda = @Valor_de_Venda, Valor_de_Comissao = @Valor_de_Comissao, Valor_Recebimento = @Valor_Recebimento, _Status = @_Status, ID_Usuario = @ID_Usuario, ID_Pessoa = @ID_Pessoa, Observacoes = @Observacoes
+	AS UPDATE Pedido SET Nome = @Nome, Valor = @Valor, Valor_de_Venda = @Valor_de_Venda, Valor_de_Comissao = @Valor_de_Comissao, Valor_Recebimento = @Valor_Recebimento, _Status = @_Status, ID_Usuario = @ID_Usuario, ID_Pessoa = @ID_Pessoa, Observacoes = @Observacoes
     WHERE ID = @ID
 GO
 CREATE PROCEDURE AtualizarPedido_Produto
@@ -569,13 +587,14 @@ CREATE PROCEDURE AtualizarPedido_Produto
 GO
 CREATE PROCEDURE AtualizarMovimento
     @ID INT,
+	@Nome VARCHAR(100),
 	@Valor_Bruto FLOAT,
 	@Valor_Liquido FLOAT,
 	@Data_de_Emissao SMALLDATETIME,
 	@Tipo VARCHAR(50),
 	@ID_Usuario INT,
 	@ID_Pessoa INT
-	AS UPDATE Movimento SET Valor_Bruto = @Valor_Bruto, Valor_Liquido = @Valor_Liquido, Data_de_Emissao = @Data_de_Emissao, Tipo = @Tipo, ID_Usuario = @ID_Usuario, ID_Pessoa = @ID_Pessoa
+	AS UPDATE Movimento SET Nome = @Nome, Valor_Bruto = @Valor_Bruto, Valor_Liquido = @Valor_Liquido, Data_de_Emissao = @Data_de_Emissao, Tipo = @Tipo, ID_Usuario = @ID_Usuario, ID_Pessoa = @ID_Pessoa
     WHERE ID = @ID
 GO
 CREATE PROCEDURE AtualizarMovimento_Produto

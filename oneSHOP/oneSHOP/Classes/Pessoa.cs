@@ -130,7 +130,18 @@ namespace oneSHOP.Classes
             string connectionString = "Server = " + ConfigurationManager.AppSettings["Server"] + "; Database =  " + ConfigurationManager.AppSettings["BD"] + "; Trusted_Connection = True;";
             SqlConnection sqlConn = new SqlConnection(connectionString);
             sqlConn.Open();
-            string comando = string.Format("EXECUTE BuscaPessoaID '{0}'", ID.ToString());
+            string comando = string.Format("EXECUTE BuscaPessoaID {0}", ID.ToString());
+            SqlCommand cmd = new SqlCommand(comando, sqlConn);
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            adapter.SelectCommand = cmd;
+            return adapter;
+        }
+        public async Task<SqlDataAdapter> BuscarPessoa(string nome)
+        {
+            string connectionString = "Server = " + ConfigurationManager.AppSettings["Server"] + "; Database =  " + ConfigurationManager.AppSettings["BD"] + "; Trusted_Connection = True;";
+            SqlConnection sqlConn = new SqlConnection(connectionString);
+            sqlConn.Open();
+            string comando = string.Format("EXECUTE BuscaPessoaNome '{0}'", nome);
             SqlCommand cmd = new SqlCommand(comando, sqlConn);
             SqlDataAdapter adapter = new SqlDataAdapter();
             adapter.SelectCommand = cmd;

@@ -50,7 +50,7 @@ namespace oneSHOP.Classes
             string connectionString = "Server = " + ConfigurationManager.AppSettings["Server"] + "; Database =  " + ConfigurationManager.AppSettings["BD"] + "; Trusted_Connection = True;";
             SqlConnection sqlConn = new SqlConnection(connectionString);
             sqlConn.Open();
-            string comando = string.Format("EXECUTE BuscaTamanhoID '{0}'", ID.ToString());
+            string comando = string.Format("EXECUTE BuscaTamanhoID {0}", ID.ToString());
             SqlCommand cmd = new SqlCommand(comando, sqlConn);
             SqlDataAdapter adapter = new SqlDataAdapter();
             adapter.SelectCommand = cmd;
