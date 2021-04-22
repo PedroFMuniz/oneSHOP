@@ -3,7 +3,7 @@ git pull
 fazer alterações
 git add --all
 git commit -m "Mensagem"
-git push origin main
+git push origin master
 git pull
 
 Colocar aqui instruções para criação das procedures especificas :)
