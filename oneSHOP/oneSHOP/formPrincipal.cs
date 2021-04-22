@@ -1,4 +1,5 @@
-﻿using System;
+﻿using oneSHOP.FormsPedidos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -30,7 +31,8 @@ namespace oneSHOP
 
         private void consignadoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            formPedidos form = new formPedidos();
+            form.ShowDialog();
         }
     }
 }

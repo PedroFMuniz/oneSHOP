@@ -92,3 +92,4 @@ C:\Users\Pedro\Desktop\oneShop\oneSHOP\oneSHOP\obj\Debug\oneSHOP.csproj.CoreComp
 C:\Users\Pedro\Desktop\oneShop\oneSHOP\oneSHOP\obj\Debug\oneSHOP.csproj.CopyComplete
 C:\Users\Pedro\Desktop\oneShop\oneSHOP\oneSHOP\obj\Debug\oneSHOP.exe
 C:\Users\Pedro\Desktop\oneShop\oneSHOP\oneSHOP\obj\Debug\oneSHOP.pdb
+C:\Users\Pedro\Desktop\oneShop\oneSHOP\oneSHOP\obj\Debug\oneSHOP.FormsPedidos.formPedidos.resources
