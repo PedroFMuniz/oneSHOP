@@ -212,6 +212,12 @@
     <Compile Include="FormsPedidos\formAcerto.Designer.cs">
       <DependentUpon>formAcerto.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormsPedidos\formBuscaPessoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsPedidos\formBuscaPessoa.Designer.cs">
+      <DependentUpon>formBuscaPessoa.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormsPedidos\formDevolucao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -348,6 +354,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormsPedidos\formAcerto.resx">
       <DependentUpon>formAcerto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsPedidos\formBuscaPessoa.resx">
+      <DependentUpon>formBuscaPessoa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormsPedidos\formDevolucao.resx">
       <DependentUpon>formDevolucao.cs</DependentUpon>

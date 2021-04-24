@@ -1,0 +1,182 @@
+Empresa(
+	public int ID { get; set; }
+	public string Nome { get; set; }
+	public string CNPJ { get; set; }
+	public string Endereco { get; set; }
+	public string Numero { get; set; }
+	public string Bairro { get; set; }
+	public int CEP { get; set; }
+	public string Cidade { get; set; }
+	public string Estado { get; set; }
+	public int ID_Usuario { get; set; }
+)
+Usuario(
+	public int ID { get; set; }
+	public string _Login { get; set; }
+	public string Senha { get; set; }
+)
+Produto(
+	public int ID { get; set; }
+	public string Nome { get; set; }
+	public string Referencia { get; set; }
+	public float Preco_Custo { get; set; }
+	public float Preco_Venda { get; set; }
+	public string Codigo { get; set; }
+	public string Tipo_Codigo { get; set; }
+	public int ID_Fiscal { get; set; }
+	public int ID_Usuario { get; set; }
+	public int ID_Grupo { get; set; }
+	public string Foto { get; set; }
+	public int Qt_Estoque { get; set; }
+	public int Qt_Rua { get; set; }
+	public string Inf_Adicionais { get; set; }
+	public int ID_Tamanho { get; set; }
+	public int ID_Linha { get; set; }
+	public int ID_Fornecedor { get; set; }
+)
+Pedido(
+	public int ID { get; set; }
+	public float Valor { get; set; }
+	public float Valor_de_Venda { get; set; }
+	public float Valor_de_Comissao { get; set; }
+	public float Valor_Recebimento { get; set; }
+	public string _Status { get; set; }
+	public int ID_Usuario { get; set; }
+	public int ID_Pessoa { get; set; }
+	public string Observacoes { get; set; }
+)
+Pedido_Produto(
+	public int ID { get; set; }
+	public float Valor_Produto { get; set; }
+	public int Quantidade { get; set; }
+	public int ID_Pedido { get; set; }
+	public int ID_Produto { get; set; }
+)
+Movimento(
+	public int ID { get; set; }
+	public float Valor_Bruto { get; set; }
+	public float Valor_Liquido { get; set; }
+	public float Data_de_Emissao { get; set; }
+	public string Tipo { get; set; }
+	public int ID_Usuario { get; set; }
+	public int ID_Pessoa { get; set; }
+)
+Movimento_Produto(
+	public int ID { get; set; }
+	public float Valor_Produto { get; set; }
+	public int Quantidade { get; set; }
+	public int ID_Movimento { get; set; }
+	int ID_Produto;
+)
+Lancamento(
+	public int ID { get; set; }
+	public string Nome { get; set; }
+	public float Valor { get; set; }
+	public float Desconto_Comissao { get; set; }
+	public Emissao SMALLDATETIME { get; set; }
+	public Vencimento SMALLDATETIME { get; set; }
+	public string _Status { get; set; }
+	public Venda BIT { get; set; }
+	public int ID_Usuario { get; set; }
+	public int ID_Natureza { get; set; }
+	public int ID_Conta { get; set; }
+	public int ID_Forma_de_Pagamento { get; set; }
+	public Baixa SMALLDATETIME { get; set; }
+	public string Descricao { get; set; }
+)
+Lancamento_Produto(
+	public int ID { get; set; }
+	public float Valor_Produto { get; set; }
+	public int Quantidade { get; set; }
+	public int ID_Lancamento { get; set; }
+	public int ID_Produto { get; set; }
+)
+Pessoa(
+	public int ID { get; set; }
+	public string Nome { get; set; }
+	public string CPF { get; set; }
+	public string Funcao { get; set; }
+	public int Verifica_Comissao { get; set; }
+	public string CEP { get; set; }
+	public string Endereco { get; set; }
+	public string Bairro { get; set; }
+	public string Cidade { get; set; }
+	public string UF { get; set; }
+	public int ID_Usuario { get; set; }
+	public int ID_Praca { get; set; }
+	public float Comissao { get; set; }
+	public int Fator_de_limite { get; set; }
+	public string Foto { get; set; }
+	public DateTime Nascimento { get; set; }
+	public string Email { get; set; }
+	public string Telefone { get; set; }
+)
+Fornecedor(
+	public int ID { get; set; }
+	public string Nome { get; set; }
+	public string CNPJ { get; set; }
+	public string Endereco { get; set; }
+	public string Telefone { get; set; }
+	public int ID_Usuario { get; set; }
+)
+Tamanho(
+	public int ID { get; set; }
+	public string Nome { get; set; }
+)
+Grupo(
+	public int ID { get; set; }
+	public string Nome { get; set; }
+	public int Estoque_min { get; set; }
+	public int Estoque_max { get; set; }
+)
+Linha(
+	public int ID { get; set; }
+	public string Nome { get; set; }
+)
+Forma_de_Pagamento(
+	public int ID { get; set; }
+	public string Nome { get; set; }
+	public float Taxa1 { get; set; }
+	public float Taxa2 { get; set; }
+	public float Taxa3 { get; set; }
+	public float Taxa4 { get; set; }
+	public float Taxa5 { get; set; }
+	public float Taxa6 { get; set; }
+	public float Taxa7 { get; set; }
+	public float Taxa8 { get; set; }
+	public float Taxa9 { get; set; }
+	public float Taxa10 { get; set; }
+	public float Taxa11 { get; set; }
+	public float Taxa12 { get; set; }
+)
+Praca(
+	public int ID { get; set; }
+	string Nome; 
+)
+Conta(
+	public int ID { get; set; }
+	public string Nome { get; set; }
+	public int ID_Carteira { get; set; }
+)
+Carteira(
+	public int ID { get; set; }
+	public string Nome { get; set; }
+)
+Natureza(
+	public int ID { get; set; }
+	public string Nome { get; set; }
+	public int ID_Grupo_Natureza { get; set; }
+)
+Grupo_Natureza(
+	public int ID { get; set; }
+	public string Nome { get; set; }
+)
+Fiscal(
+	public int ID { get; set; }
+	public string Nome { get; set; }
+	public string ncm { get; set; }
+	public string unidade OT { get; set; }
+	public int origem { get; set; }
+	public string classe_imposto { get; set; }
+	public int ID_Usuario { get; set; }
+)

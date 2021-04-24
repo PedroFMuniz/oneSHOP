@@ -16,5 +16,11 @@ namespace oneSHOP.FormsPedidos
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            formBuscaPessoa formBuscaPessoa = new formBuscaPessoa();
+            formBuscaPessoa.ShowDialog();
+        }
     }
 }

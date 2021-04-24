@@ -46,6 +46,7 @@
             // 
             // txtRevendedor
             // 
+            this.txtRevendedor.Enabled = false;
             this.txtRevendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRevendedor.Location = new System.Drawing.Point(12, 43);
             this.txtRevendedor.Name = "txtRevendedor";
@@ -64,6 +65,7 @@
             // 
             // txtCpfPedido
             // 
+            this.txtCpfPedido.Enabled = false;
             this.txtCpfPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCpfPedido.Location = new System.Drawing.Point(347, 43);
             this.txtCpfPedido.Name = "txtCpfPedido";
@@ -161,6 +163,7 @@
             this.button1.TabIndex = 39;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // dateTimePicker1
             // 
