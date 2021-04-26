@@ -333,6 +333,8 @@ CREATE PROCEDURE BuscaPessoaNome @Nome VARCHAR(100) AS SELECT * FROM Pessoa WHER
 GO
 CREATE PROCEDURE BuscaProdutoCodigo @Codigo VARCHAR(30) AS SELECT * FROM Produto WHERE Codigo = @Codigo
 GO
+CREATE PROCEDURE BuscaPessoaNome2 @Nome VARCHAR(100) AS SELECT A.Nome, B.Nome AS Praca FROM Pessoa A, Praca B WHERE A.Nome LIKE CONCAT('%',@Nome,'%') AND A.ID_Praca = B.ID
+GO
 --Inserção
 GO
 CREATE PROCEDURE InserirEmpresa 

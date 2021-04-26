@@ -19,29 +19,14 @@ namespace oneSHOP.FormsPedidos
         {
             InitializeComponent();
         }
-        private async void textBox1_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (textBox1.Text != "")
-            {
-                Pessoa pessoa = new Pessoa();
-                SqlDataAdapter adapter = await pessoa.BuscarPessoa(textBox1.Text.Trim());
-                DataSet dataSet = new DataSet();
-                adapter.Fill(dataSet, "Pessoas");
-                foreach (DataRow row in dataSet.Tables["Pessoas"].Rows)
-                {
-                    string mensagem = row["ID"].ToString() + "\n";
-                    listView1.Items.Add(mensagem);
-                }
-            }
-            else
-            {
-                listView1.Items.Clear();
-            }
-        }
 
-        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        private async void textBox1_TextChanged(object sender, EventArgs e)
         {
-            listView1.Items.Clear();
+            Pessoa pessoa = new Pessoa();
+            SqlDataAdapter sqlDataAdapter = await pessoa.BuscarPessoa2(textBox1.Text);
+            DataTable dataTable = new DataTable();
+            sqlDataAdapter.Fill(dataTable);
+            dataGridView1.DataSource = dataTable;
         }
     }
 }
