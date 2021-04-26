@@ -12,6 +12,7 @@ namespace oneSHOP.FormsPedidos
 {
     public partial class formNovoPedido : Form
     {
+        int IDPessoa;
         public formNovoPedido()
         {
             InitializeComponent();
@@ -21,6 +22,12 @@ namespace oneSHOP.FormsPedidos
         {
             formBuscaPessoa formBuscaPessoa = new formBuscaPessoa();
             formBuscaPessoa.ShowDialog();
+            if(formBuscaPessoa.DialogResult == DialogResult.OK)
+            {
+                IDPessoa = formBuscaPessoa.Id;
+                txtRevendedor.Text = formBuscaPessoa.Nome;
+                txtCpfPedido.Text = formBuscaPessoa.CPF;
+            }
         }
     }
 }

@@ -15,6 +15,9 @@ namespace oneSHOP.FormsPedidos
 {
     public partial class formBuscaPessoa : Form
     {
+        public int Id { get; set; }
+        public string Nome { get; set; }
+        public string CPF { get; set; }
         public formBuscaPessoa()
         {
             InitializeComponent();
@@ -23,10 +26,19 @@ namespace oneSHOP.FormsPedidos
         private async void textBox1_TextChanged(object sender, EventArgs e)
         {
             Pessoa pessoa = new Pessoa();
-            SqlDataAdapter sqlDataAdapter = await pessoa.BuscarPessoa2(textBox1.Text);
+            SqlDataAdapter sqlDataAdapter = await pessoa.BuscarPessoa2(textBox1.Text.Trim());
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
             dataGridView1.DataSource = dataTable;
+        }
+
+        private async void btnGravar_Click(object sender, EventArgs e)
+        {
+            Id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+            Nome = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            CPF = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            DialogResult = DialogResult.OK;
+            Close();
         }
     }
 }
