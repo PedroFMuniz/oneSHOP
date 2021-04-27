@@ -72,6 +72,7 @@
     <Compile Include="Classes\Pessoa.cs" />
     <Compile Include="Classes\Praca.cs" />
     <Compile Include="Classes\Produto.cs" />
+    <Compile Include="Classes\ProdutoPedidoNome.cs" />
     <Compile Include="Classes\Tamanho.cs" />
     <Compile Include="Classes\Usuario.cs" />
     <Compile Include="formCadastros.cs">

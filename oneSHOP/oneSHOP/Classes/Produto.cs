@@ -163,6 +163,17 @@ namespace oneSHOP.Classes
             adapter.SelectCommand = cmd;
             return adapter;
         }
+        public async Task<SqlDataAdapter> BuscarProduto2(string codigo)
+        {
+            string connectionString = "Server = " + ConfigurationManager.AppSettings["Server"] + "; Database =  " + ConfigurationManager.AppSettings["BD"] + "; Trusted_Connection = True;";
+            SqlConnection sqlConn = new SqlConnection(connectionString);
+            sqlConn.Open();
+            string comando = string.Format("EXECUTE BuscaProdutoCodigo '{0}'", codigo);
+            SqlCommand cmd = new SqlCommand(comando, sqlConn);
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            adapter.SelectCommand = cmd;
+            return adapter;
+        }
 
         //Método de atualização
         public async ValueTask<string> AtualizarProduto(Produto produto)

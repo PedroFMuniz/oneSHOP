@@ -37,11 +37,16 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtPesquisaProdutoPedido = new System.Windows.Forms.TextBox();
-            this.listProdutoPedido = new System.Windows.Forms.ListView();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGravar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Preco = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtRevendedor
@@ -125,15 +130,7 @@
             this.txtPesquisaProdutoPedido.Name = "txtPesquisaProdutoPedido";
             this.txtPesquisaProdutoPedido.Size = new System.Drawing.Size(241, 20);
             this.txtPesquisaProdutoPedido.TabIndex = 10;
-            // 
-            // listProdutoPedido
-            // 
-            this.listProdutoPedido.HideSelection = false;
-            this.listProdutoPedido.Location = new System.Drawing.Point(12, 268);
-            this.listProdutoPedido.Name = "listProdutoPedido";
-            this.listProdutoPedido.Size = new System.Drawing.Size(776, 288);
-            this.listProdutoPedido.TabIndex = 9;
-            this.listProdutoPedido.UseCompatibleStateImageBehavior = false;
+            this.txtPesquisaProdutoPedido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPesquisaProdutoPedido_KeyPress);
             // 
             // btnCancelar
             // 
@@ -172,18 +169,55 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(208, 20);
             this.dateTimePicker1.TabIndex = 40;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Codigo,
+            this.Nome,
+            this.Preco,
+            this.Quantidade});
+            this.dataGridView1.Location = new System.Drawing.Point(12, 271);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(776, 285);
+            this.dataGridView1.TabIndex = 41;
+            // 
+            // Codigo
+            // 
+            this.Codigo.DataPropertyName = "Codigo";
+            this.Codigo.HeaderText = "Código";
+            this.Codigo.Name = "Codigo";
+            // 
+            // Nome
+            // 
+            this.Nome.DataPropertyName = "Nome";
+            this.Nome.HeaderText = "Nome";
+            this.Nome.Name = "Nome";
+            // 
+            // Preco
+            // 
+            this.Preco.DataPropertyName = "Preco";
+            this.Preco.HeaderText = "Preço";
+            this.Preco.Name = "Preco";
+            // 
+            // Quantidade
+            // 
+            this.Quantidade.DataPropertyName = "Quantidade";
+            this.Quantidade.HeaderText = "Quantidade";
+            this.Quantidade.Name = "Quantidade";
+            // 
             // formNovoPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 601);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGravar);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtPesquisaProdutoPedido);
-            this.Controls.Add(this.listProdutoPedido);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtEnderecoPedido);
             this.Controls.Add(this.label3);
@@ -193,6 +227,8 @@
             this.Controls.Add(this.txtRevendedor);
             this.Name = "formNovoPedido";
             this.Text = "Novo Pedido";
+            this.Load += new System.EventHandler(this.formNovoPedido_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -209,10 +245,14 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtPesquisaProdutoPedido;
-        private System.Windows.Forms.ListView listProdutoPedido;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGravar;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Preco;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantidade;
     }
 }

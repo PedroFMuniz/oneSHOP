@@ -335,6 +335,7 @@ CREATE PROCEDURE BuscaProdutoCodigo @Codigo VARCHAR(30) AS SELECT * FROM Produto
 GO
 CREATE PROCEDURE BuscaPessoaNome2 @Nome VARCHAR(100) AS SELECT A.ID AS Código, A.Nome,A.CPF AS CPF, B.Nome AS Praca FROM Pessoa A, Praca B WHERE A.Nome LIKE CONCAT('%',@Nome,'%') AND A.ID_Praca = B.ID
 GO
+execute BuscaProduto
 --Inserção
 GO
 CREATE PROCEDURE InserirEmpresa 
