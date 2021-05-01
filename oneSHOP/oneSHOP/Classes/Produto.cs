@@ -276,9 +276,28 @@ namespace oneSHOP.Classes
                 return "Falha";
             }
         }
+        public async ValueTask<string> AtualizarProduto(int id, int estoque, int rua)
+        {
+            string connectionString = "Server = " + ConfigurationManager.AppSettings["Server"] + "; Database =  " + ConfigurationManager.AppSettings["BD"] + "; Trusted_Connection = True;";
+            SqlConnection sqlConn = new SqlConnection(connectionString);
+            sqlConn.Open();
+            string comando = string.Format("EXECUTE AtualizarProduto2 {0}, {1}, {2}", id.ToString(), estoque.ToString(), rua.ToString());
+            SqlCommand cmd = new SqlCommand(comando, sqlConn);
+            int i = cmd.ExecuteNonQuery();
+            if (i > 0)
+            {
+                sqlConn.Close();
+                return "Sucesso";
+            }
+            else
+            {
+                sqlConn.Close();
+                return "Falha";
+            }
+        }
 
-        //Método de exclusão
-        public async ValueTask<string> DeletarProduto(int ID)
+//Método de exclusão
+public async ValueTask<string> DeletarProduto(int ID)
         {
             string connectionString = "Server = " + ConfigurationManager.AppSettings["Server"] + "; Database =  " + ConfigurationManager.AppSettings["BD"] + "; Trusted_Connection = True;";
             SqlConnection sqlConn = new SqlConnection(connectionString);

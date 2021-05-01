@@ -22,7 +22,7 @@ namespace oneSHOP.FormsPedidos
         {
             InitializeComponent();
         }
-
+        //Procurar no BD as pessoas com base no texto digitado
         private async void textBox1_TextChanged(object sender, EventArgs e)
         {
             Pessoa pessoa = new Pessoa();
@@ -31,7 +31,7 @@ namespace oneSHOP.FormsPedidos
             sqlDataAdapter.Fill(dataTable);
             dataGridView1.DataSource = dataTable;
         }
-
+        //Obter dados da pessoa e enviar para o pedido
         private async void btnGravar_Click(object sender, EventArgs e)
         {
             Id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());

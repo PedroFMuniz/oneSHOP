@@ -46,6 +46,7 @@
             this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Preco = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -151,6 +152,7 @@
             this.btnGravar.TabIndex = 37;
             this.btnGravar.Text = "Gravar";
             this.btnGravar.UseVisualStyleBackColor = true;
+            this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
             // 
             // button1
             // 
@@ -176,7 +178,8 @@
             this.Codigo,
             this.Nome,
             this.Preco,
-            this.Quantidade});
+            this.Quantidade,
+            this.IDProduto});
             this.dataGridView1.Location = new System.Drawing.Point(12, 271);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(776, 285);
@@ -205,6 +208,13 @@
             this.Quantidade.DataPropertyName = "Quantidade";
             this.Quantidade.HeaderText = "Quantidade";
             this.Quantidade.Name = "Quantidade";
+            // 
+            // IDProduto
+            // 
+            this.IDProduto.DataPropertyName = "IDProduto";
+            this.IDProduto.HeaderText = "IDProduto";
+            this.IDProduto.Name = "IDProduto";
+            this.IDProduto.Visible = false;
             // 
             // formNovoPedido
             // 
@@ -254,5 +264,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
         private System.Windows.Forms.DataGridViewTextBoxColumn Preco;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantidade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDProduto;
     }
 }

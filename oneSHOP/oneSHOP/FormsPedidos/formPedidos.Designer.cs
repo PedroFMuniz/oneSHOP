@@ -34,8 +34,9 @@
             this.cancelarMovimentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.txtPesquisaMovimento = new System.Windows.Forms.TextBox();
-            this.listMovimento = new System.Windows.Forms.ListView();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -85,28 +86,29 @@
             this.txtPesquisaMovimento.Size = new System.Drawing.Size(241, 20);
             this.txtPesquisaMovimento.TabIndex = 17;
             // 
-            // listMovimento
+            // dataGridView1
             // 
-            this.listMovimento.HideSelection = false;
-            this.listMovimento.Location = new System.Drawing.Point(12, 156);
-            this.listMovimento.Name = "listMovimento";
-            this.listMovimento.Size = new System.Drawing.Size(776, 288);
-            this.listMovimento.TabIndex = 16;
-            this.listMovimento.UseCompatibleStateImageBehavior = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 151);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(776, 287);
+            this.dataGridView1.TabIndex = 20;
             // 
             // formPedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtPesquisaMovimento);
-            this.Controls.Add(this.listMovimento);
             this.Name = "formPedidos";
             this.Text = "formPedidos";
+            this.Load += new System.EventHandler(this.formPedidos_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -120,6 +122,6 @@
         private System.Windows.Forms.ToolStripMenuItem cancelarMovimentoToolStripMenuItem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtPesquisaMovimento;
-        private System.Windows.Forms.ListView listMovimento;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

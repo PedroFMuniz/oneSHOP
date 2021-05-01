@@ -11,6 +11,7 @@ namespace oneSHOP.Classes
     class Pedido
     {
         public int ID { get; set; }
+        public string Nome { get; set; }
         public float Valor { get; set; }
         public float Valor_de_Venda { get; set; }
         public float Valor_de_Comissao { get; set; }
@@ -51,7 +52,7 @@ namespace oneSHOP.Classes
             string connectionString = "Server = " + ConfigurationManager.AppSettings["Server"] + "; Database =  " + ConfigurationManager.AppSettings["BD"] + "; Trusted_Connection = True;";
             SqlConnection sqlConn = new SqlConnection(connectionString);
             sqlConn.Open();
-            string comando = string.Format("EXECUTE InserirPedido {0}, {1}, {2}, {3}, '{4}', {5}, {6}, '{7}'",pedido.Valor.ToString().Replace(",", "."), pedido.Valor_de_Venda.ToString().Replace(",", "."), pedido.Valor_de_Comissao.ToString().Replace(",", "."), pedido.Valor_Recebimento.ToString().Replace(",", "."), pedido._Status, pedido.ID_Usuario.ToString(), pedido.ID_Pessoa.ToString(), pedido.Observacoes);
+            string comando = string.Format("EXECUTE InserirPedido '{0}', {1}, {2}, {3}, {4}, '{5}', {6}, {7}, {8}",pedido.Nome,pedido.Valor.ToString().Replace(",", "."), pedido.Valor_de_Venda.ToString().Replace(",", "."), pedido.Valor_de_Comissao.ToString().Replace(",", "."), pedido.Valor_Recebimento.ToString().Replace(",", "."), pedido._Status, ID_Usuario, ID_Pessoa, Observacoes);
             SqlCommand cmd = new SqlCommand(comando, sqlConn);
             int i = cmd.ExecuteNonQuery();
             if (i > 0)
@@ -73,6 +74,16 @@ namespace oneSHOP.Classes
             SqlConnection sqlConn = new SqlConnection(connectionString);
             sqlConn.Open();
             SqlCommand cmd = new SqlCommand("EXECUTE BuscaPedido", sqlConn);
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            adapter.SelectCommand = cmd;
+            return adapter;
+        }
+        public async Task<SqlDataAdapter> BuscarPedido2()
+        {
+            string connectionString = "Server = " + ConfigurationManager.AppSettings["Server"] + "; Database =  " + ConfigurationManager.AppSettings["BD"] + "; Trusted_Connection = True;";
+            SqlConnection sqlConn = new SqlConnection(connectionString);
+            sqlConn.Open();
+            SqlCommand cmd = new SqlCommand("EXECUTE BuscaPedido2", sqlConn);
             SqlDataAdapter adapter = new SqlDataAdapter();
             adapter.SelectCommand = cmd;
             return adapter;
@@ -106,7 +117,7 @@ namespace oneSHOP.Classes
             string connectionString = "Server = " + ConfigurationManager.AppSettings["Server"] + "; Database =  " + ConfigurationManager.AppSettings["BD"] + "; Trusted_Connection = True;";
             SqlConnection sqlConn = new SqlConnection(connectionString);
             sqlConn.Open();
-            string comando = string.Format("EXECUTE AtualizarPedido {0}, {1}, {2}, {3}, {4}, '{5}', {6}, {7}, '{8}'", pedido.ID.ToString(), pedido.Valor.ToString().Replace(",", "."), pedido.Valor_de_Venda.ToString().Replace(",", "."), pedido.Valor_de_Comissao.ToString().Replace(",", "."), pedido.Valor_Recebimento.ToString().Replace(",", "."), pedido._Status, pedido.ID_Usuario.ToString(), pedido.ID_Pessoa.ToString(), pedido.Observacoes);
+            string comando = string.Format("EXECUTE AtualizarPedido {0}, '{1}', {2}, {3}, {4}, {5}, '{6}', {7}, {8}, {9}",pedido.ID.ToString(), pedido.Nome, pedido.Valor.ToString().Replace(",", "."), pedido.Valor_de_Venda.ToString().Replace(",", "."), pedido.Valor_de_Comissao.ToString().Replace(",", "."), pedido.Valor_Recebimento.ToString().Replace(",", "."), pedido._Status, pedido.ID_Usuario.ToString(), pedido.ID_Pessoa.ToString(), pedido.Observacoes);
             SqlCommand cmd = new SqlCommand(comando, sqlConn);
             int i = cmd.ExecuteNonQuery();
             if (i > 0)

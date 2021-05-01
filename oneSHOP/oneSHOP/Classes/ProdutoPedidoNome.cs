@@ -12,5 +12,6 @@ namespace oneSHOP.Classes
         public float Preco { get; set; }
         public string Codigo { get; set; }
         public int Quantidade { get; set; }
+        public int IDProduto { get; set; }
     }
 }

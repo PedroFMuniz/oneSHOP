@@ -2,6 +2,7 @@
 CREATE DATABASE BD_OneShop
 USE BD_OneShop
 
+
 --Criando as tabelas.
 CREATE TABLE Empresa(
 	ID INT IDENTITY(1, 1) PRIMARY KEY NOT NULL,
@@ -335,6 +336,8 @@ CREATE PROCEDURE BuscaProdutoCodigo @Codigo VARCHAR(30) AS SELECT * FROM Produto
 GO
 CREATE PROCEDURE BuscaPessoaNome2 @Nome VARCHAR(100) AS SELECT A.ID AS Código, A.Nome,A.CPF AS CPF, B.Nome AS Praca FROM Pessoa A, Praca B WHERE A.Nome LIKE CONCAT('%',@Nome,'%') AND A.ID_Praca = B.ID
 GO
+CREATE PROCEDURE BuscaPedido2 AS SELECT _Status AS Situação,ID AS Código, Nome AS Descrição, FORMAT(Valor, 'C', 'pt-br') FROM Pedido
+GO
 execute BuscaProduto
 --Inserção
 GO
@@ -564,6 +567,13 @@ CREATE PROCEDURE AtualizarProduto
 	@ID_Linha INT,
 	@ID_Fornecedor INT
 	AS UPDATE Produto SET Nome = @Nome, Referencia = @Referencia, Preco_Custo = @Preco_Custo, Preco_Venda = @Preco_Venda, Codigo = @Codigo, Tipo_Codigo = @Tipo_Codigo, ID_Fiscal = @ID_Fiscal, ID_Usuario = @ID_Usuario, ID_Grupo = @ID_Grupo, Foto = @Foto, Qt_Estoque = @Qt_Estoque, Qt_Rua = @Qt_Rua, Inf_Adicionais = @Inf_Adicionais, ID_Tamanho = @ID_Tamanho, ID_Linha = @ID_Linha, ID_Fornecedor = @ID_Fornecedor
+    WHERE ID = @ID
+GO
+CREATE PROCEDURE AtualizarProduto2
+    @ID INT,
+	@Qt_Estoque INT,
+	@Qt_Rua INT
+	AS UPDATE Produto SET Qt_Estoque = @Qt_Estoque, Qt_Rua = @Qt_Rua
     WHERE ID = @ID
 GO
 CREATE PROCEDURE AtualizarPedido
