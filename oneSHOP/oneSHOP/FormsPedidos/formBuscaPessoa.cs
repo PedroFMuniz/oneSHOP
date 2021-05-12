@@ -18,6 +18,7 @@ namespace oneSHOP.FormsPedidos
         public int Id { get; set; }
         public string Nome { get; set; }
         public string CPF { get; set; }
+        public string Limite { get; set; }
         public formBuscaPessoa()
         {
             InitializeComponent();
@@ -34,15 +35,23 @@ namespace oneSHOP.FormsPedidos
         //Obter dados da pessoa e enviar para o pedido
         private async void btnGravar_Click(object sender, EventArgs e)
         {
-            Id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
-            Pessoa pessoa = new Pessoa();
-            SqlDataAdapter sqlDataAdapter = await pessoa.BuscarPessoa(Id);
-            DataTable dataTable = new DataTable();
-            sqlDataAdapter.Fill(dataTable);
-            Nome = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            CPF = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-            DialogResult = DialogResult.OK;
-            Close();
+            try
+            {
+                Id = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                Pessoa pessoa = new Pessoa();
+                SqlDataAdapter sqlDataAdapter = await pessoa.BuscarPessoa(Id);
+                DataTable dataTable = new DataTable();
+                sqlDataAdapter.Fill(dataTable);
+                Nome = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                CPF = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                Limite = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+            catch(NullReferenceException)
+            {
+                MessageBox.Show("Selecione uma consultora", "Erro");
+            }
         }
     }
 }

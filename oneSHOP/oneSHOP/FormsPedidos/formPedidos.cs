@@ -38,5 +38,38 @@ namespace oneSHOP.FormsPedidos
         {
             AtualizaGrid();
         }
+
+        private async void dataGridView1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                if (dataGridView1.CurrentRow.Cells[0].Value.ToString() == "Aberto")
+                {
+                    if (MessageBox.Show("Tem certeza que deseja excluir este pedido?", "Confirmação", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        Pedido pedido = new Pedido();
+                        DeletarProdutos(int.Parse(dataGridView1.CurrentRow.Cells[1].Value.ToString()));
+                        await pedido.DeletarPedido(int.Parse(dataGridView1.CurrentRow.Cells[1].Value.ToString()));
+                        AtualizaGrid();
+                    }
+                }
+            }
+        }
+        private async void DeletarProdutos(int id)
+        {
+            Produto produto = new Produto();
+            Pedido_Produto pedido_Produto = new Pedido_Produto();
+            SqlDataAdapter adapter = await pedido_Produto.BuscarPedido_Produto2(id);
+            DataTable dataTable = new DataTable();
+            adapter.Fill(dataTable);
+            foreach(DataRow dataRow in dataTable.Rows)
+            {
+                SqlDataAdapter adapter1 = await produto.BuscarProduto(int.Parse(dataRow["ID_Produto"].ToString()));
+                DataTable dataTable1 = new DataTable();
+                adapter1.Fill(dataTable1);
+                await produto.AtualizarProduto(int.Parse(dataRow["ID_Produto"].ToString()), int.Parse(dataTable1.Rows[0]["QT_Estoque"].ToString()) + int.Parse(dataRow["Quantidade"].ToString()), int.Parse(dataTable1.Rows[0]["QT_Rua"].ToString()) - int.Parse(dataRow["Quantidade"].ToString()));
+            }
+            await pedido_Produto.DeletarPedido_Produto2(int.Parse(dataGridView1.CurrentRow.Cells[1].Value.ToString()));
+        }
     }
 }

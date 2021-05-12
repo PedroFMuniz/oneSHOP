@@ -2,6 +2,9 @@
 CREATE DATABASE BD_OneShop
 USE BD_OneShop
 
+execute BuscaProduto
+update Pessoa SET Fator_de_limite = 60
+
 
 --Criando as tabelas.
 CREATE TABLE Empresa(
@@ -334,11 +337,11 @@ CREATE PROCEDURE BuscaPessoaNome @Nome VARCHAR(100) AS SELECT * FROM Pessoa WHER
 GO
 CREATE PROCEDURE BuscaProdutoCodigo @Codigo VARCHAR(30) AS SELECT * FROM Produto WHERE Codigo = @Codigo
 GO
-CREATE PROCEDURE BuscaPessoaNome2 @Nome VARCHAR(100) AS SELECT A.ID AS Código, A.Nome,A.CPF AS CPF, B.Nome AS Praca FROM Pessoa A, Praca B WHERE A.Nome LIKE CONCAT('%',@Nome,'%') AND A.ID_Praca = B.ID
+CREATE PROCEDURE BuscaPessoaNome2 @Nome VARCHAR(100) AS SELECT A.ID AS Código, A.Nome, A.CPF AS CPF, FORMAT(A.Fator_de_limite, 'C', 'pt-br') AS Limite, B.Nome AS Praca FROM Pessoa A, Praca B WHERE A.Nome LIKE CONCAT('%',@Nome,'%') AND A.ID_Praca = B.ID
 GO
 CREATE PROCEDURE BuscaPedido2 AS SELECT _Status AS Situação,ID AS Código, Nome AS Descrição, FORMAT(Valor, 'C', 'pt-br') FROM Pedido
 GO
-execute BuscaProduto
+CREATE PROCEDURE BuscaPedido_Produto2 @ID INT AS SELECT * FROM Pedido_Produto WHERE ID_Pedido = @ID 
 --Inserção
 GO
 CREATE PROCEDURE InserirEmpresa 
@@ -805,6 +808,15 @@ GO
 CREATE PROCEDURE DeletarFiscalID @Valor1 INT AS DELETE FROM Fiscal WHERE ID = @Valor1
 GO
 
+--Exclusão por parametros
+
+GO
+CREATE PROCEDURE DeletarPedido_ProdutoID2 @Valor1 INT AS DELETE FROM Pedido_Produto WHERE ID_Pedido = @Valor1
+GO
+CREATE PROCEDURE DeletarMovimento_ProdutoID2 @Valor1 INT AS DELETE FROM Movimento_Produto WHERE ID_Movimento = @Valor1
+GO
+CREATE PROCEDURE DeletarLancamento_ProdutoID2 @Valor1 INT AS DELETE FROM Lancamento_Produto WHERE ID_Lancamento = @Valor1
+GO
 --Criação de registros de teste
 execute InserirUsuario 'jorge', '2584'
 execute InserirPraca 'Sorocaba'

@@ -47,6 +47,9 @@
             this.Preco = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IDProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblQnt = new System.Windows.Forms.Label();
+            this.lblValor = new System.Windows.Forms.Label();
+            this.lblLimite = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -131,12 +134,13 @@
             this.txtPesquisaProdutoPedido.Name = "txtPesquisaProdutoPedido";
             this.txtPesquisaProdutoPedido.Size = new System.Drawing.Size(241, 20);
             this.txtPesquisaProdutoPedido.TabIndex = 10;
+            this.txtPesquisaProdutoPedido.TextChanged += new System.EventHandler(this.txtPesquisaProdutoPedido_TextChanged);
             this.txtPesquisaProdutoPedido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPesquisaProdutoPedido_KeyPress);
             // 
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(564, 562);
+            this.btnCancelar.Location = new System.Drawing.Point(564, 609);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(109, 31);
             this.btnCancelar.TabIndex = 38;
@@ -146,7 +150,7 @@
             // btnGravar
             // 
             this.btnGravar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGravar.Location = new System.Drawing.Point(679, 562);
+            this.btnGravar.Location = new System.Drawing.Point(679, 609);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(109, 31);
             this.btnGravar.TabIndex = 37;
@@ -216,11 +220,44 @@
             this.IDProduto.Name = "IDProduto";
             this.IDProduto.Visible = false;
             // 
+            // lblQnt
+            // 
+            this.lblQnt.AutoSize = true;
+            this.lblQnt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQnt.Location = new System.Drawing.Point(288, 568);
+            this.lblQnt.Name = "lblQnt";
+            this.lblQnt.Size = new System.Drawing.Size(162, 20);
+            this.lblQnt.TabIndex = 42;
+            this.lblQnt.Text = "Quantidade total: 999";
+            // 
+            // lblValor
+            // 
+            this.lblValor.AutoSize = true;
+            this.lblValor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValor.Location = new System.Drawing.Point(467, 568);
+            this.lblValor.Name = "lblValor";
+            this.lblValor.Size = new System.Drawing.Size(150, 20);
+            this.lblValor.TabIndex = 43;
+            this.lblValor.Text = "Valor: R$ 99.999,99";
+            // 
+            // lblLimite
+            // 
+            this.lblLimite.AutoSize = true;
+            this.lblLimite.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLimite.Location = new System.Drawing.Point(637, 568);
+            this.lblLimite.Name = "lblLimite";
+            this.lblLimite.Size = new System.Drawing.Size(151, 20);
+            this.lblLimite.TabIndex = 44;
+            this.lblLimite.Text = "Limite R$ 99.999,99";
+            // 
             // formNovoPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 601);
+            this.ClientSize = new System.Drawing.Size(800, 646);
+            this.Controls.Add(this.lblLimite);
+            this.Controls.Add(this.lblValor);
+            this.Controls.Add(this.lblQnt);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.button1);
@@ -237,7 +274,6 @@
             this.Controls.Add(this.txtRevendedor);
             this.Name = "formNovoPedido";
             this.Text = "Novo Pedido";
-            this.Load += new System.EventHandler(this.formNovoPedido_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -265,5 +301,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Preco;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantidade;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDProduto;
+        private System.Windows.Forms.Label lblQnt;
+        private System.Windows.Forms.Label lblValor;
+        private System.Windows.Forms.Label lblLimite;
     }
 }
