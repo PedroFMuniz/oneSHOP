@@ -3,7 +3,7 @@ CREATE DATABASE BD_OneShop
 USE BD_OneShop
 
 execute BuscaProduto
-update Pessoa SET Fator_de_limite = 60
+update Pessoa SET Fator_de_limite = 2000
 
 
 --Criando as tabelas.

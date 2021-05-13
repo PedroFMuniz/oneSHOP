@@ -20,6 +20,7 @@ namespace oneSHOP.FormsPedidos
         float limite = 0;
         float total = 0;
         new string Name;
+        bool adicionar = true;
         List<ProdutoPedidoNome> lista = new List<ProdutoPedidoNome>();
         public formNovoPedido()
         {
@@ -32,7 +33,7 @@ namespace oneSHOP.FormsPedidos
             total = 0;
             foreach (ProdutoPedidoNome p in lista)
             {
-                quantidade++;
+                quantidade += p.Quantidade;
                 total += p.Preco * p.Quantidade;
             }
             lblQnt.Text = string.Format("Quantidade total: {0}", quantidade.ToString());
@@ -82,60 +83,93 @@ namespace oneSHOP.FormsPedidos
                 //Pesquisar produto por código ao apertar enter
                 if (e.KeyChar == 13)
                 {
-                    //Variáveis
-                    int i = -1;
-                    bool verificador = false;
-                    //Pesquisando o produto pelo código
-                    Produto produto1 = new Produto();
-                    SqlDataAdapter adapter = await produto1.BuscarProduto2(txtPesquisaProdutoPedido.Text);
-                    DataTable data = new DataTable();
-                    adapter.Fill(data);
-                    //Verificando se o BD possui o produto
-                    if (data.Rows.Count < 1)
+                    //Se estiver adicionando produtos
+                    if (adicionar)
                     {
-                        MessageBox.Show("Produto não encontrado", "Erro", MessageBoxButtons.OK);
-                        txtPesquisaProdutoPedido.Text = null;
+                        //Variáveis
+                        int i = -1;
+                        bool verificador = false;
+                        //Pesquisando o produto pelo código
+                        Produto produto1 = new Produto();
+                        SqlDataAdapter adapter = await produto1.BuscarProduto2(txtPesquisaProdutoPedido.Text);
+                        DataTable data = new DataTable();
+                        adapter.Fill(data);
+                        //Verificando se o BD possui o produto
+                        if (data.Rows.Count < 1)
+                        {
+                            MessageBox.Show("Produto não encontrado", "Erro", MessageBoxButtons.OK);
+                            txtPesquisaProdutoPedido.Text = null;
+                        }
+                        else
+                        {
+                            //Verificando se o limite foi excedido
+                            if (total + int.Parse(data.Rows[0]["Preco_Venda"].ToString()) > limite)
+                            {
+                                MessageBox.Show("O limite da consultora foi excedido, favor verificar", "Erro", MessageBoxButtons.OK);
+                                AtualizarGrid();
+                            }
+                            else
+                            {
+                                //Verificando se já possui o produto no pedido
+                                foreach (ProdutoPedidoNome p in lista)
+                                {
+                                    i++;
+                                    if (p.Codigo == txtPesquisaProdutoPedido.Text)
+                                    {
+                                        verificador = true;
+                                        break;
+                                    }
+                                }
+                                //Se tiver, incrementar a quantidade do produto no pedido
+                                if (verificador)
+                                {
+                                    lista[i].Quantidade++;
+                                    AtualizarGrid();
+                                }
+                                //Se não, inserir produto no pedido
+                                else
+                                {
+                                    ProdutoPedidoNome produto = new ProdutoPedidoNome()
+                                    {
+                                        Codigo = data.Rows[0]["Codigo"].ToString(),
+                                        Nome = data.Rows[0]["Nome"].ToString(),
+                                        Preco = float.Parse(data.Rows[0]["Preco_Venda"].ToString()),
+                                        Quantidade = 1,
+                                        IDProduto = int.Parse(data.Rows[0]["ID"].ToString())
+                                    };
+                                    lista.Add(produto);
+                                    AtualizarGrid();
+                                }
+                            }
+                        }
                     }
+                    //Senão
                     else
                     {
-                        //Verificando se o limite foi excedido
-                        if (total + int.Parse(data.Rows[0]["Preco_Venda"].ToString()) > limite)
+                        int i = -1;
+                        bool verificador = false;
+                        //Verificar se tem o produto na lista
+                        foreach (ProdutoPedidoNome p in lista)
                         {
-                            MessageBox.Show("O limite da consultora foi excedido, favor verificar", "Erro", MessageBoxButtons.OK);
+                            i++;
+                            if (p.Codigo == txtPesquisaProdutoPedido.Text)
+                            {
+                                verificador = true;
+                                break;
+                            }
+                        }
+                        if (verificador)
+                        {
+                            lista[i].Quantidade--;
+                            if(lista[i].Quantidade <= 0)
+                            {
+                                lista.RemoveAt(i);
+                            }
                             AtualizarGrid();
                         }
                         else
                         {
-                            //Verificando se já possui o produto no pedido
-                            foreach (ProdutoPedidoNome p in lista)
-                            {
-                                i++;
-                                if (p.Codigo == txtPesquisaProdutoPedido.Text)
-                                {
-                                    verificador = true;
-                                    break;
-                                }
-                            }
-                            //Se tiver, incrementar a quantidade do produto no pedido
-                            if (verificador)
-                            {
-                                lista[i].Quantidade++;
-                                AtualizarGrid();
-                            }
-                            //Se não, inserir produto no pedido
-                            else
-                            {
-                                ProdutoPedidoNome produto = new ProdutoPedidoNome()
-                                {
-                                    Codigo = data.Rows[0]["Codigo"].ToString(),
-                                    Nome = data.Rows[0]["Nome"].ToString(),
-                                    Preco = float.Parse(data.Rows[0]["Preco_Venda"].ToString()),
-                                    Quantidade = 1,
-                                    IDProduto = int.Parse(data.Rows[0]["ID"].ToString())
-                                };
-                                lista.Add(produto);
-                                AtualizarGrid();
-                            }
+                            MessageBox.Show("O produto não existe no pedido", "Erro", MessageBoxButtons.OK);
                         }
                     }
                 }
@@ -198,6 +232,23 @@ namespace oneSHOP.FormsPedidos
                 txtPesquisaProdutoPedido.Text = null;
                 verificador = false;
             }
+        }
+
+        private void formNovoPedido_Load(object sender, EventArgs e)
+        {
+            AtualizarLabel();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            adicionar = true;
+            label5.Text = "Adicionando produtos:";
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            adicionar = false;
+            label5.Text = "Retirando produtos:";
         }
     }
 }

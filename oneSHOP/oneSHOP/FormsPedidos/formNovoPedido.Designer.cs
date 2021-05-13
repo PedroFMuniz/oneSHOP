@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtRevendedor = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtCpfPedido = new System.Windows.Forms.TextBox();
@@ -50,6 +51,8 @@
             this.lblQnt = new System.Windows.Forms.Label();
             this.lblValor = new System.Windows.Forms.Label();
             this.lblLimite = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -122,15 +125,15 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(544, 226);
+            this.label5.Location = new System.Drawing.Point(12, 232);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(97, 13);
+            this.label5.Size = new System.Drawing.Size(110, 13);
             this.label5.TabIndex = 11;
-            this.label5.Text = "Pesquisar produtos";
+            this.label5.Text = "Adicionando produtos";
             // 
             // txtPesquisaProdutoPedido
             // 
-            this.txtPesquisaProdutoPedido.Location = new System.Drawing.Point(547, 242);
+            this.txtPesquisaProdutoPedido.Location = new System.Drawing.Point(12, 248);
             this.txtPesquisaProdutoPedido.Name = "txtPesquisaProdutoPedido";
             this.txtPesquisaProdutoPedido.Size = new System.Drawing.Size(241, 20);
             this.txtPesquisaProdutoPedido.TabIndex = 10;
@@ -170,13 +173,19 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(580, 48);
+            this.dateTimePicker1.Location = new System.Drawing.Point(580, 42);
+            this.dateTimePicker1.MinimumSize = new System.Drawing.Size(4, 29);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(208, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(208, 29);
             this.dateTimePicker1.TabIndex = 40;
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Codigo,
@@ -204,6 +213,9 @@
             // Preco
             // 
             this.Preco.DataPropertyName = "Preco";
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = "0";
+            this.Preco.DefaultCellStyle = dataGridViewCellStyle1;
             this.Preco.HeaderText = "Preço";
             this.Preco.Name = "Preco";
             // 
@@ -250,11 +262,33 @@
             this.lblLimite.TabIndex = 44;
             this.lblLimite.Text = "Limite R$ 99.999,99";
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(713, 242);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 45;
+            this.button2.Text = "Adicionar";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(632, 242);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 46;
+            this.button3.Text = "Retirar";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // formNovoPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 646);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.lblLimite);
             this.Controls.Add(this.lblValor);
             this.Controls.Add(this.lblQnt);
@@ -274,6 +308,7 @@
             this.Controls.Add(this.txtRevendedor);
             this.Name = "formNovoPedido";
             this.Text = "Novo Pedido";
+            this.Load += new System.EventHandler(this.formNovoPedido_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -296,13 +331,15 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label lblQnt;
+        private System.Windows.Forms.Label lblValor;
+        private System.Windows.Forms.Label lblLimite;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
         private System.Windows.Forms.DataGridViewTextBoxColumn Preco;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantidade;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDProduto;
-        private System.Windows.Forms.Label lblQnt;
-        private System.Windows.Forms.Label lblValor;
-        private System.Windows.Forms.Label lblLimite;
     }
 }
